@@ -268,7 +268,7 @@ dependencies = [
 
 [[package]]
 name = "links-logs-vault"
-version = "0.19.2"
+version = "0.20.0"
 dependencies = [
  "clap",
  "link-cli",
