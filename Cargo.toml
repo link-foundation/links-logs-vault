@@ -9,7 +9,7 @@ keywords = ["logging", "search", "lino", "associative", "observability"]
 categories = ["development-tools::debugging", "database-implementations"]
 repository = "https://github.com/link-foundation/links-logs-vault"
 documentation = "https://docs.rs/links-logs-vault"
-rust-version = "1.70"
+rust-version = "1.87"
 
 # Narrow allowlist of files shipped in the published `.crate` archive.
 # Keeping this list tight prevents docs, case studies, generated CI artifacts,

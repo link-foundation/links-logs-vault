@@ -70,7 +70,8 @@ and apply `limit` last.
 
 - Public APIs contain no unsafe code.
 - Files are portable across supported operating systems.
-- The manifest declares Rust 1.70; implementation avoids newer standard APIs.
+- The manifest declares Rust 1.87, the effective minimum required by
+  `link-cli`'s storage dependencies.
 - Binary lengths are checked before allocation/read.
 - The CLI treats a downstream broken pipe as a clean exit.
 - The first release is local and single-process; concurrent writers are not
