@@ -1,4 +1,4 @@
-mod sum;
+mod vault;
 
 #[path = "ci-cd/mod.rs"]
 mod ci_cd;

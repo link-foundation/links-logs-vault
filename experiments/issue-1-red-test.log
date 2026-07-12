@@ -1,0 +1,101 @@
+ Downloading crates ...
+  Downloaded anstream v0.6.21
+  Downloaded anstyle-query v1.1.5
+  Downloaded same-file v1.0.6
+  Downloaded anstyle v1.0.14
+  Downloaded colorchoice v1.0.5
+  Downloaded utf8parse v0.2.2
+  Downloaded clap_lex v1.1.0
+  Downloaded lino-env v0.1.0
+  Downloaded itoa v1.0.18
+  Downloaded heck v0.5.0
+  Downloaded dtor-proc-macro v0.0.5
+  Downloaded is_terminal_polyfill v1.70.2
+  Downloaded dtor v0.0.6
+  Downloaded ctor-proc-macro v0.0.6
+  Downloaded ctor v0.4.3
+  Downloaded aho-corasick v1.1.4
+  Downloaded zmij v1.0.21
+  Downloaded walkdir v2.5.0
+  Downloaded serde_derive v1.0.228
+  Downloaded serde v1.0.228
+  Downloaded proc-macro2 v1.0.103
+  Downloaded memchr v2.8.0
+  Downloaded clap v4.5.60
+  Downloaded regex v1.12.3
+  Downloaded serde_json v1.0.150
+  Downloaded clap_builder v4.5.60
+  Downloaded serde_core v1.0.228
+  Downloaded quote v1.0.42
+  Downloaded unicode-ident v1.0.22
+  Downloaded lino-arguments v0.3.0
+  Downloaded dotenvy v0.15.7
+  Downloaded syn v2.0.111
+  Downloaded clap_derive v4.5.55
+  Downloaded thiserror-impl v1.0.69
+  Downloaded thiserror v1.0.69
+  Downloaded regex-syntax v0.8.10
+  Downloaded strsim v0.11.1
+  Downloaded anstyle-parse v0.2.7
+  Downloaded regex-automata v0.4.14
+   Compiling proc-macro2 v1.0.103
+   Compiling unicode-ident v1.0.22
+   Compiling quote v1.0.42
+   Compiling serde_core v1.0.228
+   Compiling utf8parse v0.2.2
+   Compiling anstyle v1.0.14
+   Compiling anstyle-parse v0.2.7
+   Compiling colorchoice v1.0.5
+   Compiling anstyle-query v1.1.5
+   Compiling is_terminal_polyfill v1.70.2
+   Compiling serde v1.0.228
+   Compiling anstream v0.6.21
+   Compiling dtor-proc-macro v0.0.5
+   Compiling thiserror v1.0.69
+   Compiling clap_lex v1.1.0
+   Compiling heck v0.5.0
+   Compiling strsim v0.11.1
+   Compiling dtor v0.0.6
+   Compiling ctor-proc-macro v0.0.6
+   Compiling memchr v2.8.0
+   Compiling lino-env v0.1.0
+   Compiling clap_builder v4.5.60
+   Compiling ctor v0.4.3
+   Compiling zmij v1.0.21
+   Compiling syn v2.0.111
+   Compiling dotenvy v0.15.7
+   Compiling aho-corasick v1.1.4
+   Compiling serde_json v1.0.150
+   Compiling regex-syntax v0.8.10
+   Compiling itoa v1.0.18
+   Compiling same-file v1.0.6
+   Compiling walkdir v2.5.0
+   Compiling regex-automata v0.4.14
+   Compiling thiserror-impl v1.0.69
+   Compiling serde_derive v1.0.228
+   Compiling clap_derive v4.5.55
+   Compiling regex v1.12.3
+   Compiling clap v4.5.60
+   Compiling lino-arguments v0.3.0
+   Compiling example-sum-package-name v0.19.2 (/tmp/gh-issue-solver-1783826912603)
+error: environment variable `CARGO_BIN_EXE_links-logs-vault` not defined at compile time
+  --> tests/integration/cli.rs:20:18
+   |
+20 |     let binary = env!("CARGO_BIN_EXE_links-logs-vault");
+   |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = help: `CARGO_BIN_EXE_links-logs-vault` may not be available for the current Cargo target
+   = help: Cargo sets build script variables at run time. Use `std::env::var("CARGO_BIN_EXE_links-logs-vault")` instead
+
+error: could not compile `example-sum-package-name` (test "integration") due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error[E0432]: unresolved import `links_logs_vault`
+ --> tests/unit/vault.rs:6:5
+  |
+6 | use links_logs_vault::{
+  |     ^^^^^^^^^^^^^^^^ use of unresolved module or unlinked crate `links_logs_vault`
+  |
+  = help: if you wanted to use a crate named `links_logs_vault`, use `cargo add links_logs_vault` to add it to your `Cargo.toml`
+
+For more information about this error, try `rustc --explain E0432`.
+error: could not compile `example-sum-package-name` (test "unit") due to 1 previous error
