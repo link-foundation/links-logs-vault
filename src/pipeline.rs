@@ -89,7 +89,7 @@ impl Pipeline {
 
     /// Mutably borrows the pipeline output.
     #[must_use]
-    pub fn vault_mut(&mut self) -> &mut Vault {
+    pub const fn vault_mut(&mut self) -> &mut Vault {
         &mut self.vault
     }
 

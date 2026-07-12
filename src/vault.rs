@@ -96,25 +96,25 @@ impl Vault {
                 query
                     .channel
                     .as_ref()
-                    .map_or(true, |value| entry.record.channel == *value)
+                    .is_none_or(|value| entry.record.channel == *value)
             })
             .filter(|entry| {
                 query
                     .min_level
-                    .map_or(true, |value| entry.record.level >= value)
+                    .is_none_or(|value| entry.record.level >= value)
             })
             .filter(|entry| {
                 query
                     .from_timestamp
-                    .map_or(true, |value| entry.record.timestamp >= value)
+                    .is_none_or(|value| entry.record.timestamp >= value)
             })
             .filter(|entry| {
                 query
                     .to_timestamp
-                    .map_or(true, |value| entry.record.timestamp <= value)
+                    .is_none_or(|value| entry.record.timestamp <= value)
             })
             .filter(|entry| {
-                needle.as_ref().map_or(true, |value| {
+                needle.as_ref().is_none_or(|value| {
                     entry
                         .record
                         .message()
@@ -143,13 +143,13 @@ impl Vault {
 
     /// Number of durable events.
     #[must_use]
-    pub fn len(&self) -> usize {
+    pub const fn len(&self) -> usize {
         self.records.len()
     }
 
     /// Whether the vault contains no events.
     #[must_use]
-    pub fn is_empty(&self) -> bool {
+    pub const fn is_empty(&self) -> bool {
         self.records.is_empty()
     }
 

@@ -58,26 +58,29 @@ fn text_and_binary_stores_round_trip_the_same_records() {
             .expect("test should be able to remove the graph sidecar");
 
         let reopened = Vault::open(&path, format).expect("vault should reopen");
-        let all_records = reopened.search(&Query::default());
-        assert_eq!(all_records.len(), 2);
-        assert_eq!(all_records[0].record.message(), Some("request's complete"));
-        let matches = reopened.search(&Query {
-            min_level: Some(LogLevel::Error),
-            ..Query::default()
-        });
+        {
+            let all_records = reopened.search(&Query::default());
+            assert_eq!(all_records.len(), 2);
+            assert_eq!(all_records[0].record.message(), Some("request's complete"));
+            let matches = reopened.search(&Query {
+                min_level: Some(LogLevel::Error),
+                ..Query::default()
+            });
 
-        assert_eq!(matches.len(), 1);
-        assert_eq!(matches[0].id, 2);
-        assert_eq!(
-            matches[0].record.payload.as_bytes(),
-            &[0, 159, 146, 150, 255]
-        );
-        assert_eq!(
-            matches[0].record.fields.get("job"),
-            Some(&String::from("import"))
-        );
+            assert_eq!(matches.len(), 1);
+            assert_eq!(matches[0].id, 2);
+            assert_eq!(
+                matches[0].record.payload.as_bytes(),
+                &[0, 159, 146, 150, 255]
+            );
+            assert_eq!(
+                matches[0].record.fields.get("job"),
+                Some(&String::from("import"))
+            );
+        }
         assert!(reopened.association_count() > reopened.len());
 
+        drop(reopened);
         remove_store(&path);
     }
 }
@@ -120,11 +123,13 @@ fn search_combines_time_channel_level_text_and_field_filters() {
         fields: BTreeMap::from([(String::from("region"), String::from("eu"))]),
         limit: Some(1),
     };
-    let matches = vault.search(&query);
-
-    assert_eq!(matches.len(), 1);
-    assert_eq!(matches[0].record.message(), Some("request was slow"));
+    {
+        let matches = vault.search(&query);
+        assert_eq!(matches.len(), 1);
+        assert_eq!(matches[0].record.message(), Some("request was slow"));
+    }
     assert_eq!(vault.count_by_level().get(&LogLevel::Warning), Some(&1));
+    drop(vault);
     remove_store(&path);
 }
 
@@ -149,10 +154,13 @@ fn pipeline_applies_filters_and_can_drop_noisy_records() {
         Some(1)
     );
 
-    let records = pipeline.vault().search(&Query::default());
-    assert_eq!(
-        records[0].record.fields.get("service"),
-        Some(&String::from("billing"))
-    );
+    {
+        let records = pipeline.vault().search(&Query::default());
+        assert_eq!(
+            records[0].record.fields.get("service"),
+            Some(&String::from("billing"))
+        );
+    }
+    drop(pipeline);
     remove_store(&path);
 }
