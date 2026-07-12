@@ -401,6 +401,10 @@ fn cargo_manifest_uses_narrow_include_allowlist() {
         manifest.contains("\"src/**/*.rs\""),
         "include allowlist should ship the crate sources"
     );
+    assert!(
+        manifest.contains("\"/README.md\""),
+        "root documentation patterns should not include nested case-study READMEs"
+    );
     // Docs, case studies, changelog fragments, scripts, and experiments must not
     // be opted into the published archive.
     for excluded in ["\"docs/", "\"changelog.d/", "\"scripts/", "\"experiments/"] {

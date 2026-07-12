@@ -18,11 +18,11 @@ rust-version = "1.87"
 include = [
     "src/**/*.rs",
     "examples/**/*.rs",
-    "README.md",
-    "REQUIREMENTS.md",
-    "ARCHITECTURE.md",
-    "LICENSE",
-    "CHANGELOG.md",
+    "/README.md",
+    "/REQUIREMENTS.md",
+    "/ARCHITECTURE.md",
+    "/LICENSE",
+    "/CHANGELOG.md",
 ]
 
 [lib]
