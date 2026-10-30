@@ -1,6 +1,6 @@
 [package]
 name = "links-logs-vault"
-version = "0.20.0"
+version = "0.20.1"
 edition = "2021"
 description = "An associative log vault with LiNo text and compact binary stores"
 readme = "README.md"

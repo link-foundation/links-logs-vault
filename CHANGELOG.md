@@ -33,6 +33,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
+
+## [0.20.1] - 2026-10-30
+
+### Changed
+- Prefer GitHub Actions trusted publishing for crates.io releases, retaining CARGO_REGISTRY_TOKEN and CARGO_TOKEN secrets as fallbacks when OIDC authentication is unavailable.
+
 ## [0.20.0] - 2026-07-12
 
 ### Added
