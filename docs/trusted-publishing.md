@@ -3,8 +3,9 @@
 Both release jobs in `.github/workflows/release.yml` request a short-lived
 crates.io token through the pinned `rust-lang/crates-io-auth-action`. Authentication
 runs after the release build and package-size check, immediately before publishing.
-Only the release jobs receive `id-token: write`. Pull requests run validation but
-do not run either release job.
+Registry authentication runs only in release jobs with `id-token: write`.
+Documentation deployment separately uses OIDC for GitHub Pages. Pull requests
+run validation but do not run either release job.
 
 The publish step chooses credentials in this order:
 
