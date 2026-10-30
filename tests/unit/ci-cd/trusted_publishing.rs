@@ -52,6 +52,12 @@ fn release_authentication_prefers_oidc_and_preserves_both_secret_fallbacks() {
                 .to_owned()
         };
         assert_eq!(condition(auth), condition(publish));
+        let expected_condition = if name == "auto-release" {
+            "if: steps.check.outputs.should_release == 'true' && steps.check.outputs.crate_published != 'true'"
+        } else {
+            "if: steps.version.outputs.version_committed == 'true' || steps.version.outputs.already_released == 'true'"
+        };
+        assert_eq!(condition(auth), expected_condition);
         assert!(job.find("- name: Build release").unwrap() < job.find(auth).unwrap());
         assert!(job.find("- name: Check crate package size").unwrap() < job.find(auth).unwrap());
     }
